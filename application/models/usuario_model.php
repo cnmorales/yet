@@ -11,9 +11,24 @@ class usuario_model extends CI_Model{
     parent::__construct();
   }
 
-  public function __GET($k){ return $this->$k; }
-  public function __SET($k, $v){ return $this->$k = $v; }
+  // public function __GET($k){
+  //   return $this->$k;
+  // }
+  //
+  // public function __SET($k, $v){
+  //    return $this->$k = $v;
+  //  }
 
+  public function agregar_usuario($nombre,$apellido,$email,$clave){
+    //Inserta datos en la tabla usuario
+         $data = array(
+            'username'=>$nombre,
+            'password'=>$clave,
+            'email'=>$email,
+            'enabled'=>'1'
+         );
+         $this->db->insert('usuario', $data);
+  }
   // function comprar($producto,$total){
   //      //Inserta datos en la tabla compras
   //      $data = array(

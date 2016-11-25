@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Index_login extends CI_Controller {
@@ -29,29 +30,6 @@ class Index_login extends CI_Controller {
         $this->load->view('layout/layout',$vistas);
     }
 
-    public function usuario_agregar(){
-        //Obtiene el id de producto para agregar
-        $nombre = $this->input->post("Nombre");
-        $apellido = $this->input->post("Apellido");
-        $email = $this->input->post("Email");
-        $email2 = $this->input->post("Email2");
-        $clave = $this->input->post("Clave");
-        $clave2 = $this->input->post("Clave2");
-
-        //aca hubo una validacion
-
-        $this->load->model('usuario_model');
-        $usuario = $this->usuario_model->agregar_usuario($nombre,$apellido,$email,$clave);
-
-        $this->load->view('enviodemail');
-
-        //Generar codigo random
-        rand(0,200);
-
-        //Armar url
-
-        //Enviar url
-
-    }
+  
 }
 ?>

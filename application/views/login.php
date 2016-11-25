@@ -174,7 +174,7 @@ $(function() {
 									</div>
 								</form>
 
-								<form id="register-form" action="<?php echo base_url()?>Index_login/usuario_agregar/" method="post" role="form" style="display: none;">
+								<form id="register-form" action="<?php echo base_url()?>Login_controller/usuario_agregar/" method="POST">
 									<div class="form-group">
 										<input type="text" name="Nombre" id="Nombre" tabindex="1" class="form-control" placeholder="Nombre" value="">
 									</div>
