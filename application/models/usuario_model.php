@@ -29,6 +29,20 @@ class usuario_model extends CI_Model{
          );
          $this->db->insert('usuario', $data);
   }
+
+
+  public function usuario_loguear($user,$password){
+       $this->db->select('usuario_id, username, password');
+       $this->db->from('usuario');
+       $this->db->where('username',$user);
+       $this->db->where('password',$password);
+       $consulta = $this->db->get();
+       $resultado = $consulta->result_array();
+       return $resultado;
+    }
+
+
+
   // function comprar($producto,$total){
   //      //Inserta datos en la tabla compras
   //      $data = array(

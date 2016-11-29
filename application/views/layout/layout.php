@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body>
 
-<?=$menu?>
+<?=$header?>
 
 <div class="container main-container">
 <?=$contenido?>

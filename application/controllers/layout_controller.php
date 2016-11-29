@@ -1,9 +1,6 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Index_login extends CI_Controller {
-
+class Layout_controller extends CI_Controller {
 	/**
 	 * Index Page for this controller.
 	 *
@@ -19,17 +16,14 @@ class Index_login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-        public function index()
-    {
-        //Carga vista del head html
-        $vistas["head"] = $this->load->view('layout/head',array(),true);
-        $vistas["menu"] = "";
-        $vistas["contenido"] = $this->load->view('login',array(),true);
-        $vistas["footer"] = $this->load->view('layout/footer',array(),true);
-        //Llama a la plantilla (layout) y le pasa como parametro el head, menu, listado de prodictos y footer
-        $this->load->view('layout/layout',$vistas);
-    }
-
-  
+	 public function index()
+	 	{
+	         //Carga vista del head html
+	         $vistas["head"] = $this->load->view('layout/head',array(),true);
+	         $vistas["header"] = $this->load->view('layout/header',array(),true);
+	         $vistas["contenido"] = $this->load->view('home',array(),true);
+	         $vistas["footer"] = '';
+	         //Llama a la plantilla (layout) y le pasa como parametro el head, menu, listado de prodictos y footer
+	         $this->load->view('layout/layout',$vistas);
+	 	}
 }
-?>

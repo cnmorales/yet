@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTN Programación avanzada</title>
+    <title>Yet</title>
 
-    <link href="/carrito_compra/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url("assets/bootstrap/css/bootstrap.css"); ?>" />
+   <script type="text/javascript" src="<?php echo base_url("assets/bootstrap/js/jquery-3.1.1.slim.min.js"); ?>"></script>
+   <script type="text/javascript" src="<?php echo base_url("assets/bootstrap/js/bootstrap.js"); ?>"></script>
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+   <meta charset="utf-8">
 
-    <link href="/carrito_compra/assets/css/style.css" rel="stylesheet">
-
-
-    
 </head>
