@@ -1,3 +1,4 @@
+
 <body>
   <nav class="navbar navbar-default">
    <div class="container-fluid">
@@ -16,10 +17,11 @@
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
        <ul class="nav navbar-nav navbar-right">
          <!-- <li><a href="<?php base_url()?>productos_controller/cargar_vista_abm_productos/">Menú</a></li> -->
-     <li><a href="#">Reservas</a></li>
-     <li><a href="#">Usuarios</a></li>
+     <!-- <li><a href="#">Reservas</a></li> -->
+     <li><a href="#">Admin</a></li>
        </ul>
      </div><!-- /.navbar-collapse -->
    </div><!-- /.container-fluid -->
+
  </nav>
 </body>

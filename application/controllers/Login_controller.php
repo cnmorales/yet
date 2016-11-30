@@ -25,6 +25,7 @@ class Login_controller extends CI_Controller {
 		//  Carga vista del head html
 		$vistas["head"] = $this->load->view('layout/head',array(),true);
 		$vistas["header"] = "";
+		$vistas["left_menu"] = "";
 		$vistas["contenido"] = $this->load->view('login',array(),true);
 		$vistas["footer"] = $this->load->view('layout/footer',array(),true);
 		//Llama a la plantilla (layout) y le pasa como parametro el head, menu, listado de prodictos y footer
@@ -35,7 +36,8 @@ class Login_controller extends CI_Controller {
 	{
 		//  Carga vista del head html
 		$vistas["head"] = $this->load->view('layout/head',array(),true);
-		$vistas["header"] = $this->load->view('layout/header',array(),true);;
+		$vistas["header"] = $this->load->view('layout/header',array(),true);
+		$vistas["left_menu"] =  $this->load->view('layout/left_menu', array(), true);
 		$vistas["contenido"] = $this->load->view('home',array(),true);
 		$vistas["footer"] = $this->load->view('layout/footer',array(),true);
 		//Llama a la plantilla (layout) y le pasa como parametro el head, menu, listado de prodictos y footer

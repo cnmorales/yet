@@ -7,14 +7,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?=$head?>
 
 <body>
-
-<?=$header?>
-
-<div class="container main-container">
-<?=$contenido?>
-</div>
-
-<?=$footer?>
+  <div style="width:100%;"> <!-- Main Div -->
+    <?=$header?>
+    <?=$left_menu?>
+    <div style="float:right; width:80%; margin-left:10px;">
+      <!-- Set Div As your requirement -->
+      <div class="container main-container">
+        <?=$contenido?>
+      </div>
+    </div>
+    <div>
+      <?=$footer?>
+    </div>
+  </div>
 
 </body>
 </html>
