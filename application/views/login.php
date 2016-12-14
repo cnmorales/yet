@@ -124,8 +124,40 @@ $(function() {
 
 });
 
+$(document).ready(function(){
+$('#login-submit').click(function(event) {
+   event.preventDefault();
+
+   $.ajax( {
+
+   	url: '<?php echo base_url()?>login_controller/usuario_loguear/',
+   	type: 'POST',
+   	dataType: "json",
+   	data: 'username=' + $('#username').val() +'&'+ 'password=' + $('#password').val(),
+
+      success: function(data) {
+      	if(data.status == 0){
+      		//TODO Mostrar error en login
+      		$('#mensaje').html('Usuario y contraseña invalidos.')
+      		//$("#selector_hijo").html(data.contenido);
+      	}
+        else {
+        		//TODO todo esta bien
+        		$('#mensaje').html('Usuario y contraseña validos.')
+        	  window.location.assign("<?php echo base_url()?>login_controller/load_home/");
+      	}
+      },
+      error: function() {
+         //$('#notification-bar').text('An error occurred');
+      }
+   });
+});
+});
+
 </script>
 
+
+<div id="mensaje"></div>
 
 <div class="container">
         <div class="row">
@@ -145,7 +177,7 @@ $(function() {
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form id="login-form" action="<?php echo base_url()?>login_controller/usuario_loguear/" method="POST" role="form" style="display: block;">
+								<form id="login-form" role="form" style="display: block;">
 									<div class="form-group">
 										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>

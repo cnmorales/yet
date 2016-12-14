@@ -75,11 +75,13 @@ class Login_controller extends CI_Controller {
 		$this->load->model('usuario_model');
 		$result = $this->usuario_model->usuario_loguear($username,$password);
 		if ($result != null){
-			$this->load_home();
+			echo json_encode(array('status' => '1', "contenido" => "Soy el señor home"));
+			exit;
+			//$this->load_home();
 		}
 		else {
-			//mostrar pantalla de error
-			echo "NO SOY EL SEÑOR HOME :(";
+			echo json_encode(array('status' => '0', "contenido" => "No soy el señor home"));
+			exit;
 		}
 	}
 
