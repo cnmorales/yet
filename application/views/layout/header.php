@@ -1,27 +1,32 @@
 
-<body>
-  <nav class="navbar navbar-default">
-   <div class="container-fluid">
-     <!-- Brand and toggle get grouped for better mobile display -->
-     <div class="navbar-header">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-         <span class="sr-only">Toggle navigation</span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </button>
-       <a class="navbar-brand" href="#">YET</a>
-     </div>
-
-     <!-- Collect the nav links, forms, and other content for toggling -->
-     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-       <ul class="nav navbar-nav navbar-right">
-         <!-- <li><a href="<?php base_url()?>productos_controller/cargar_vista_abm_productos/">Menú</a></li> -->
-     <!-- <li><a href="#">Reservas</a></li> -->
-     <li><a href="#">Admin</a></li>
-       </ul>
-     </div><!-- /.navbar-collapse -->
-   </div><!-- /.container-fluid -->
-
- </nav>
-</body>
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">YET</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">Get Started</a>
+        </li>
+        <li>
+          <a href="#">Edit</a>
+          <!-- <li><a href="<?php base_url()?>productos_controller/cargar_vista_abm_productos/">Menú</a></li> -->
+      <!-- <li><a href="#">Reservas</a></li> -->
+        </li>
+        <li>
+          <a href="#">Visualize</a>
+        </li>
+        <li>
+          <a href="#">Prototype</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

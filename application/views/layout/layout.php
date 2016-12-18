@@ -6,14 +6,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <?=$head?>
 
+
+
 <body>
-  <div style="width:100%;"> <!-- Main Div -->
-    <?=$header?>
-    <?=$left_menu?>
-    <div style="float:right; width:80%; margin-left:10px;">
-      <!-- Set Div As your requirement -->
-      <div class="container main-container">
-        <?=$contenido?>
+  <?=$header?>
+  <div>
+    <div class="container">
+        <div class="row">
+      <div class="col-md-3" id="leftCol">
+        <?=$left_menu?>
+      </div>
+      <div class="col-md-9" id="mainCol">
+        <!-- Set Div As your requirement -->
+          <?=$contenido?>
       </div>
     </div>
     <div>
