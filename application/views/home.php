@@ -35,13 +35,35 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Cliente</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <form>
+            <div class="form-group">
+              <label for="name">Nombre:</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="address">Direccion:</label>
+              <input type="text" class="form-control" id="address" name="address">
+            </div>
+           <div class="form-group">
+              <label for="web">Web:</label>
+              <input type="text" class="form-control" id="web" name="web">
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="text" class="form-control" id="phone" name="phone">
+            </div>
+            <input type="submit" name="create-client-submit" id="create-client-submit" tabindex="4" class="form-control btn btn-default" value="Crear">
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
 
@@ -54,12 +76,37 @@
    $(document).ready(function(){
      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
      //$('#modal1').modal();
+     $('#create-client-submit').click(function(event) {
+        event.preventDefault();
+        $.ajax( {
+        	url: '<?php echo base_url()?>client_controller/crear/',
+        	type: 'POST',
+        	dataType: "json",
+        	data: 'name=' + $('#name').val() +'&'+
+                'address=' + $('#address').val() +'&'+
+                'web=' + $('#web').val() +'&'+
+                'email=' + $('#email').val() +'&'+
+                'phone=' + $('#email').val(),
+
+           success: function(data) {
+           	if(data.status == 0){
+           		//TODO Mostrar error en login
+           		$('#mensaje').html('Error al crear cliente.')
+           		//$("#selector_hijo").html(data.contenido);
+           	}
+             else {
+             		//TODO todo esta bien
+             		$('#mensaje').html('Creado correctamente.')
+             	  window.location.assign("<?php echo base_url()?>login_controller/load_home/");
+           	}
+           },
+           error: function() {
+              //$('#notification-bar').text('An error occurred');
+           }
+        });
+     });
 
 
-       $('#clientModal').modal({
-             dismissible: true, // Modal can be dismissed by clicking outside of the modal
-             opacity: .6, // Opacity of modal background
-           });
 
 
 

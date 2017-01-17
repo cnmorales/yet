@@ -125,11 +125,10 @@ $(function() {
 });
 
 $(document).ready(function(){
+
 $('#login-submit').click(function(event) {
    event.preventDefault();
-
    $.ajax( {
-
    	url: '<?php echo base_url()?>login_controller/usuario_loguear/',
    	type: 'POST',
    	dataType: "json",

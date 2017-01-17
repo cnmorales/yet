@@ -13,9 +13,18 @@ class cliente_model extends CI_Model{
     parent::__construct();
   }
 
-  public function __GET($k){ return $this->$k; }
-  public function __SET($k, $v){ return $this->$k = $v; }
-
+  public function crear($name,$address,$web,$email,$phone){
+    //Inserta datos en la tabla usuario
+         $data = array(
+            'nombre'=>$name,
+            'direccion'=>$address,
+            'web'=>$web,
+            'mail'=>$email,
+            'telefono'=>$phone,
+            'enabled'=>'1'
+         );
+        return $this->db->insert('cliente', $data);
+  }
 
 }
 
