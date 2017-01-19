@@ -20,15 +20,19 @@
       <i class="large material-icons">add</i>
     </a>
     <ul>
-      <li><a class="waves-effect waves-light btn btn-floating green modal-trigger" id="addEventModal"><i class="material-icons" >note_add</i></a></li><label>Evento</label>
-      <li><a class="waves-effect waves-light btn btn-floating red"  id="addCalendarModal" ><i class="material-icons">web</i></a></li><label>Calendario</label>
-      <li><a class="waves-effect waves-light btn btn-floating yellow darken-1"  id="addContactModal" ><i class="material-icons">perm_contact_calendar</i></a></li><label>Contacto</label>
-      <li><a class="waves-effect waves-light btn btn-floating blue"  data-toggle="modal" data-target="#clientModal"><i class="material-icons">business</i></a></li><label>Cliente</label>
+      <li><a class="waves-effect waves-light btn btn-floating green modal-trigger"
+            id="addEventModal" data-toggle="modal" data-target="#eventModal"><i class="material-icons" >note_add</i></a></li><label>Evento</label>
+      <li><a class="waves-effect waves-light btn btn-floating red"
+            id="addCalendarModal" data-toggle="modal" data-target="#calendarModal" ><i class="material-icons">web</i></a></li><label>Calendario</label>
+      <li><a class="waves-effect waves-light btn btn-floating yellow darken-1"
+            id="addContactModal" data-toggle="modal" data-target="#contactModal" ><i class="material-icons">perm_contact_calendar</i></a></li><label>Contacto</label>
+      <li><a class="waves-effect waves-light btn btn-floating blue"
+          id="addBusinessModal"data-toggle="modal" data-target="#clientModal"><i class="material-icons">business</i></a></li><label>Cliente</label>
     </ul>
   </div>
 
 
-  <!-- Modal -->
+  <!-- Modal Cliente -->
   <div id="clientModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
       <!-- Modal content-->
@@ -66,9 +70,90 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
-
     </div>
   </div>
+
+  <!-- Modal Calendario -->
+  <div id="calendarModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Calendario</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="calendar_name" name="calendar_name">
+            </div>
+            <div class="form-group">
+              <label for="calendar_client">Cliente vinculado</label>
+                <select class="form-control"  id="calendar_client" name="calendar_client">
+                  <?php
+                  foreach($clientes as $key => $value):
+                    echo '<option value="'. $value["key"] .'">' .$value["nombre"]. '</option>';
+                  endforeach;
+                  ?>
+                </select>
+            </div>
+            <input type="submit" name="create-calendar-submit" id="create-calendar-submit" tabindex="4" class="form-control btn btn-default" value="Crear">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Evento -->
+  <div id="eventModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Evento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="desc">Descripción:</label>
+              <input type="text" class="form-control" id="desc" name="desc">
+            </div>
+            <div class="form-group">
+              <label for="fechaDesde">Fecha desde:</label>
+              <input type="text" class="form-control" id="fechaDesde" name="fechaDesde">
+            </div>
+           <div class="form-group">
+              <label for="fechaHasta">Fecha hasta:</label>
+              <input type="text" class="form-control" id="fechaHasta" name="fechaHasta">
+            </div>
+            <div class="form-group">
+              <label for="horaDesde">Hora desde:</label>
+              <input type="email" class="form-control" id="horaDesde" name="horaDesde">
+            </div>
+            <div class="form-group">
+              <label for="horaHasta">Hora hasta:</label>
+              <input type="text" class="form-control" id="horaHasta" name="horaHasta">
+            </div>
+            <div class="form-group">
+              <label for="cal">Calendario</label>
+              <input type="text" class="form-control" id="cal" name="cal">
+            </div>
+
+            <input type="submit" name="create-calendar-submit" id="create-calendar-submit" tabindex="4" class="form-control btn btn-default" value="Crear">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -99,6 +184,33 @@
              		$('#mensaje').html('Creado correctamente.')
              	  window.location.assign("<?php echo base_url()?>login_controller/load_home/");
            	}
+           },
+           error: function() {
+              //$('#notification-bar').text('An error occurred');
+           }
+        });
+     });
+
+     $('#create-calendar-submit').click(function(event) {
+        event.preventDefault();
+        $.ajax( {
+         url: '<?php echo base_url()?>calendar_controller/crear/',
+         type: 'POST',
+         dataType: "json",
+         data: 'nombre=' + $('#calendar_name').val() +'&'+
+               'cliente=' + $('#calendar_client').val(),
+
+           success: function(data) {
+             if(data.status == 0){
+               //TODO Mostrar error en login
+               $('#mensaje').html('Error al crear calendario.')
+               //$("#selector_hijo").html(data.contenido);
+             }
+             else {
+                 //TODO todo esta bien
+                 $('#mensaje').html('Creado correctamente.')
+                 window.location.assign("<?php echo base_url()?>login_controller/load_home/");
+             }
            },
            error: function() {
               //$('#notification-bar').text('An error occurred');

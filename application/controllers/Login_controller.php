@@ -38,8 +38,15 @@ class Login_controller extends CI_Controller {
 		$vistas["head"] = $this->load->view('layout/head',array(),true);
 		$vistas["header"] = $this->load->view('layout/header',array(),true);
 		$vistas["left_menu"] =  $this->load->view('layout/left_menu', array(), true);
-		$vistas["contenido"] = $this->load->view('home',array(),true);
+
+		//parametros necesarios en nuestra home
+		$this->load->model('cliente_model');
+		$result = $this->cliente_model->clientesAsList();
+		$parametros["clientes"] = $result;
+
+		$vistas["contenido"] = $this->load->view('home',$parametros,true);
 		$vistas["footer"] = $this->load->view('layout/footer',array(),true);
+		
 		//Llama a la plantilla (layout) y le pasa como parametro el head, menu, listado de prodictos y footer
 		$this->load->view('layout/layout',$vistas);
 	}
